@@ -3,9 +3,10 @@
 
 Default URL=mine.moneropool.com:3333. Need to pass your Monero wallet address for WALLETADDR variable.
 
-    docker run -name cpuminer -d -e URL=<POOL_URL> -e WALLETADDR=<MONERO_ADDRESS> centminmod/docker-ubuntu-cpuminer
+    docker run --name cpuminer -d -e URL=<POOL_URL> -e WALLETADDR=<MONERO_ADDRESS> centminmod/docker-ubuntu-cpuminer
 
 `minerd` options
+
 
     ./minerd -h
     Usage: minerd [OPTIONS]
