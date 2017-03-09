@@ -1,9 +1,12 @@
 [cpuminer](https://github.com/wolf9466/cpuminer-multi) docker image on Ubuntu Zesty
 =================
 
-Default URL=mine.moneropool.com:3333. Need to pass your Monero wallet address for WALLETADDR variable.
+* Default URL=mine.moneropool.com:3333. 
+* Need to pass your Monero wallet address for WALLETADDR variable.
+* Right now you need to manually set THREADS variable so 2 SSH commands to run would be
 
-    docker run --name cpuminer -d -e URL=<POOL_URL> -e WALLETADDR=<MONERO_ADDRESS> centminmod/docker-ubuntu-cpuminer
+    THREADS=$(lscpu | awk '/^L3/ {l3=sprintf("%u", $NF)/1024} /^Socket/ {sockets=sprintf("%u", $NF)} END {print l3*sockets/2}')
+    docker run --name cpuminer -d -e URL=<POOL_URL> -e WALLETADDR=<MONERO_ADDRESS> -e THREADS=$THREDS centminmod/docker-ubuntu-cpuminer
 
 `minerd` options
 
