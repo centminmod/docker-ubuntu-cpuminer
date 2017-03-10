@@ -5,6 +5,8 @@
 * Need to pass your Monero wallet address for WALLETADDR variable.
 * Right now you need to manually set THREADS variable so 2 SSH commands to run would be
 
+2 commands to run to calculate the number of threads and assign to THREADS variable and the docker run command
+
     THREADS=$(lscpu | awk '/^L3/ {l3=sprintf("%u", $NF)/1024} /^Socket/ {sockets=sprintf("%u", $NF)} END {print l3*sockets/2}')
     docker run --name cpuminer -d -e URL=<POOL_URL> -e WALLETADDR=<MONERO_ADDRESS> -e THREADS=$THREDS centminmod/docker-ubuntu-cpuminer
 
